@@ -1,4 +1,3 @@
-# Tupla
 dias_da_semana = (
     "Domingo",
     "Segunda-Feira",
