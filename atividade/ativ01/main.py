@@ -1,6 +1,11 @@
 import os
 import json
 
+import os
+import json
+
+os.makedirs('ativ01', exist_ok=True)
+
 users = []
 os.system('cls')
 
@@ -39,8 +44,8 @@ while True:
                     if cont == 's':
                         os.system('cls')
                         arq = input('Digite o nome do arquivo a ser criado: ').strip()
-                        with open(f'ativ01/{arq}.json','w',encoding='utf-8') as f:
-                            users = json.dump(users,f)
+                        with open(f'ativ01/{arq}.json', 'w', encoding='utf-8') as f:
+                            json.dump(users, f, ensure_ascii=False, indent=4)
                         print('Arquivo gravado com sucesso :D')
                         continue
                     else:
@@ -49,15 +54,21 @@ while True:
             case '3':
                 try:
                     abrir = input('Insira o nome do arquivo a ser aberto: ').strip()
-                    with open(f'ativ01/{abrir}.json','r',encoding = 'utf-8') as f:
+
+                    with open(f'ativ01/{abrir}.json', 'r', encoding='utf-8') as f:
                         users = json.load(f)
+                    if not isinstance(users, list):
+                        print('Erro: o arquivo não contém uma lista de usuários.')
+                        continue
+
                     for user in users:
-                        for chave,valor in user.items():
-                            print(f'{chave.capitalize()}: {valor}')
-                    print(f'{'-'*40}')
+                         if isinstance(user, dict):
+                            for chave, valor in user.items():
+                                print(f'{chave.capitalize()}: {valor}')
+                            print('-' * 40)
                 except Exception as e:
                     print(f'Algo deu errado ---> {e}')
-                continue
+                    continue
 
             case '4':
                 abrir = input('Insira o nome do arquivo a ser aberto: ').strip()
