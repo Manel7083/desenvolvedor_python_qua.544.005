@@ -1,5 +1,5 @@
 #importa o módulo de limpeza
-from modulo import limpar, peso_terra, peso_lua, peso_mercurio, peso_venus, peso_marte, peso_jupiter, peso_saturno, peso_urano, peso_netuno
+from atividade.parte03.atividade01.modulo import limpar, peso_terra, peso_lua, peso_mercurio, peso_venus, peso_marte, peso_jupiter, peso_saturno, peso_urano, peso_netuno
 
 peso = float(input("Digite o seu peso (kg): ").replace(",","."))
 
